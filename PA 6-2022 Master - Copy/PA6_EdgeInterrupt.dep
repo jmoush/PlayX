@@ -1,0 +1,20 @@
+Dependencies for Project 'PA6', Target 'EdgeInterrupt': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARM_Compiler_5.06u7
+F (.\startup.s)(0x60FDFA90)(--cpu Cortex-M4 --li --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_EdgeInterrupt-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM4\Include--pd "__UVISION_VERSION SETA 538" --pd "_RTE_ SETA 1" --pd "ARMCM4 SETA 1" --pd "_RTE_ SETA 1"--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\tm4c123gh6pm.h)(0x60FDFA90)()
+F (.\PLL.h)(0x60FDFA8E)()
+F (.\PLL.c)(0x61759ECC)(-c --cpu Cortex-M4 -D__EVAL --li -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_EdgeInterrupt-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="538" -D_RTE_ -DARMCM4 -D_RTE_-o .\pll.o --omf_browse .\pll.crf --depend .\pll.d)
+I (PLL.h)(0x60FDFA8E)
+I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8EF392)
+I (tm4c123gh6pm.h)(0x60FDFA90)
+F (.\UART.c)(0x63680DAE)(-c --cpu Cortex-M4 -D__EVAL --li -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_EdgeInterrupt-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="538" -D_RTE_ -DARMCM4 -D_RTE_-o .\uart.o --omf_browse .\uart.crf --depend .\uart.d)
+I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8EF392)
+I (UART.h)(0x61759564)
+I (tm4c123gh6pm.h)(0x60FDFA90)
+F (.\UART.h)(0x61759564)()
+F (.\main.c)(0x6406061B)(-c --cpu Cortex-M4 -D__EVAL --li -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_EdgeInterrupt-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include-IC:\Users\Joseph\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="538" -D_RTE_ -DARMCM4 -D_RTE_-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdint.h)(0x5E8EF392)
+I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdlib.h)(0x5E8EF392)
+I (tm4c123gh6pm.h)(0x60FDFA90)
+I (PLL.h)(0x60FDFA8E)
+I (UART.h)(0x61759564)
