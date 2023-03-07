@@ -5,4 +5,4 @@
 # The Master source code is intended to be flashed on a Tiva TM4C123GXL board connected to a HC-05 Bluetooth Module that is in master mode.
 # The Slave source code is for the HC-05 Bluetooth module that is in slave mode. 
 # HC-05 Bluetooth Module can be in Master and/or Slave mode using AT commands.
-# The code was compiled using version 5.06 of keil uvision 5 and the stellaris drivers for debugging.
+# The code was compiled using version 5.06 update 7 (build 960) of keil uvision 5 and the stellaris drivers for debugging.
