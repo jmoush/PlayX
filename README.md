@@ -2,7 +2,7 @@
 This project is for the 22-23 Senior Design Team 02-PlayXtension at the University Of Kentucky. 
 The resources for Keil,Stellaris,and AT commands are included in this project for reference and ease of access.  
 # HC-05 Master and Slave Mode
-The source code files is PA6.uvprojx which is located under the two folders named PA6-2022 Master v1.0 & PA6-2022 Slave v1.0. The old files are the original PA6-2022 Master and PA6-2022 Slave.  
+The source code files is PA6.uvprojx which is located under the two folders named PA6-2022 Master v1.0 & PA6-2022 Slave v1.0.
 This project makes use of two Tiva TM4C123GXL boards and two HC-05 Bluetooth modules.  
 The Master source code is intended to be flashed on a Tiva TM4C123GXL board connected to a HC-05 Bluetooth Module that is in master mode.  
 The Slave source code is intended to be flashed on a Tiva TM4C123GXL board connected to a HC-05 Bluetooth Module that is in slave mode.  
