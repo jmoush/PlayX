@@ -10,7 +10,7 @@ TXD-PE4
 VCC-VBUS  
 GND-GND  
 # Master and Slave Files
-The source code files is PA6.uvprojx which is located under the two folders named PA6-2022 Master v1.0 & PA6-2022 Slave v1.0.
+Their are two source code files which are contained in the two folders named PA6-2022 Master v1.0 & PA6-2022 Slave v1.0. with the project file being PA6.uvprojx. 
 This project makes use of two Tiva TM4C123GXL boards and two HC-05 Bluetooth modules.  
 The Master source code is intended to be flashed on a Tiva TM4C123GXL board connected to a HC-05 Bluetooth Module that is in master mode.  
 The Slave source code is intended to be flashed on a Tiva TM4C123GXL board connected to a HC-05 Bluetooth Module that is in slave mode.
