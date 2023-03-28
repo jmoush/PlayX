@@ -20,7 +20,7 @@ A pdf of AT commands available for the HC-05 is provided at https://s3-sa-east-1
 # List of AT commands that were used:  
 AT+ADDR?\r\n (To get the slave’s module Bluetooth address to allow master to pair using Bind command).  
 AT+NAME \r\n (Optional, I changed the name of master module to MasterHC05 and slave module to slaveHC05).  
-AT+ROLE=0 sets module role to slave, AT+ROLE=1 sets module role to master. 
+AT+ROLE=0 sets module role to slave, AT+ROLE=1 sets module role to master.   
 AT+BIND=1234, 56, abcdef\r\n (Master binds pairing to personal slave’s address. AT command only sent to master).  
 # Keil Resources
 The code was compiled using MDK 5.38,version 5.06 update 7 (build 960) of keil uvision 5 and the stellaris drivers for debugging.  
