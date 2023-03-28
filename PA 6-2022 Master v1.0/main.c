@@ -58,11 +58,11 @@ void PortF_Init(void){ volatile uint32_t delay;
 void PortA_Init(void){ volatile unsigned long delay;
   SYSCTL_RCGCGPIO_R |= 0x00000001;     // 1) activate clock for Port A
   delay = SYSCTL_RCGCGPIO_R;           // allow time for clock to start
-  GPIO_PORTA_AMSEL_R &= ~0x7C;      // 3) disable analog on PA2-7
-  GPIO_PORTA_PCTL_R &= ~0xFFFFFFFF; // 4) PCTL GPIO on PA2-7
-	GPIO_PORTA_DIR_R &=~0x7C;        // 5) direction PA2-7 input  
-	GPIO_PORTA_AFSEL_R &= ~0x7C;      // 6) PA2-7 regular port function
-  GPIO_PORTA_DEN_R |= 0x7C;         // 7) enable PA2-7 digital port
+  GPIO_PORTA_AMSEL_R &= ~0x7C;      // 3) disable analog on PA2-6
+  GPIO_PORTA_PCTL_R &= ~0xFFFFFFFF; // 4) PCTL GPIO on PA2-6
+	GPIO_PORTA_DIR_R &=~0x7C;        // 5) direction PA2-6 input  
+	GPIO_PORTA_AFSEL_R &= ~0x7C;      // 6) PA2-6 regular port function
+  GPIO_PORTA_DEN_R |= 0x7C;         // 7) enable PA2-6 digital port
 }
 // Read PF4,PF0 inputs
 uint32_t PortF_Input(void){     
@@ -103,7 +103,9 @@ int main(void){
 	//DisableInterrupts(); //PortF interrupts used for debugging.
 	while(1){
 //if input is high, output corresponding character
-//Buttons A-C on toy,M for mode and H is for volume. Use L if there is two buttons for volume control.
+//Debouncing code within each if statement to alleviate bouncing of the swtiches.
+//Buttons A-C on toy,M for mode and H is for volume.
+//Use L if there is two buttons for volume control.
 	if (PA2 == 0x04){
 		UART_OutChar('A');
 		Delay(1000000);//between 100000-1000000
@@ -136,13 +138,14 @@ int main(void){
 	//PortF_Toggle(BLUE_LED);//debugging
 		Delay(1);
 	}	
-	/*if (PA7 == 0x80){
+	/*
+	if (PA7 == 0x80){
 		UART_OutChar('L');
 		Delay(1000000);
 		while (PA7 != 0x00){}
 	//PortF_Toggle(BLUE_LED);//debugging
 		Delay(1);
-		//If volume low is it's own button.
+		//If volume low is its own button.
 	}
 */	
 }
