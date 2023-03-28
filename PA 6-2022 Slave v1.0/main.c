@@ -112,11 +112,11 @@ int main(void){
 	//PortF_Output(BLUE_LED);
 	while (1){
 		switch (UART_InChar()){
-			case 'A': PortA_Output(0x04);break; 		//PortA_Output(0x04)
-			case 'B': PortA_Output(0x08);break;		  //PortA_Output(0x08)
-			case 'C': PortA_Output(0x10);break;			//PortA_Output(0x10)
-			case 'M': PortA_Toggle(0x20);break;     //PortA_Togggle(0x20) toggles the mode
-			case 'H': PortA_Toggle(0x40);break;			//PortA_Output(0x40)
+			case 'A': PortA_Output(0x04);break; 		//Turn on PA2
+			case 'B': PortA_Output(0x08);break;		  //PA3
+			case 'C': PortA_Output(0x10);break;			//PA4
+			case 'M': PortA_Toggle(0x20);break;      //Toggles the mode switch on the toy.
+			case 'H': PortA_Toggle(0x40);break;			//Toggle Volume Switch on the toy.
 			//case 'L': PortA_Output(0x80);break; 	//PortA_Output(0x80) Not in use since volume was turned into one button
 			//default is optional since there should not be any characters other than the ones in the case statement
 		}		
