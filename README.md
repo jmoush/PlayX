@@ -1,6 +1,9 @@
 # PlayX
-This project is for the 22-23 Senior Design Team 02-PlayXtension at the University Of Kentucky. 
-The resources for Keil,Stellaris,and AT commands are included in this project for reference and ease of access.  
+This project is for the 22-23 Senior Design Team 02-PlayXtension at the University Of Kentucky.
+# Keil uvision 5 Resources
+The ARM compiler version can be downloaded at https://developer.arm.com/downloads/view/ACOMP5.  
+If using version 5.29 or higher of MDK, Stellaris debugger needs an addon to work which can be downloaded at https://developer.arm.com/documentation/ka002280/latest.  
+The code was compiled using MDK 5.38,version 5.06 update 7 (build 960) of keil uvision 5 and the stellaris drivers for debugging.  
 # Microcontroller Connections
 Based on the Tiva TM4C123GXL:  
 The port used for the pushbuttons are Port A 2-6  
@@ -22,7 +25,4 @@ AT+ADDR?\r\n (To get the slave’s module Bluetooth address to allow master to p
 AT+NAME \r\n (Optional, I changed the name of master module to MasterHC05 and slave module to slaveHC05).  
 AT+ROLE=0 sets module role to slave, AT+ROLE=1 sets module role to master.   
 AT+BIND=1234, 56, abcdef\r\n (Master binds pairing to personal slave’s address. AT command only sent to master).  
-# Keil Resources
-The code was compiled using MDK 5.38,version 5.06 update 7 (build 960) of keil uvision 5 and the stellaris drivers for debugging.  
-The ARM compiler version can be downloaded at https://developer.arm.com/downloads/view/ACOMP5.  
-If using version 5.29 or higher of MDK, Stellaris debugger needs an addon to work which can be downloaded at https://developer.arm.com/documentation/ka002280/latest.  
+  
