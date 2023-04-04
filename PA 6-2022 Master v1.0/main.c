@@ -7,8 +7,10 @@
 #include "PLL.h"
 #include "UART.h"
 
+//Port F buttons
 #define SW1							0x01											// on the left side of the Launchpad board
 #define SW2							0x10											// on the right side of the Launchpad board
+
 //Port F LEDs
 #define RED_LED     		0x02
 #define BLUE_LED  	  	0x04
@@ -22,12 +24,14 @@
 #define PA5 (*((volatile unsigned long *)0x40004080))
 #define PA6 (*((volatile unsigned long *)0x40004100))
 //#define PA7 (*((volatile unsigned long *)0x40004200)) use if there are two volume buttons
+
 //defined to suppress warnings.
 void EnableInterrupts(void);
 void DisableInterrupts(void);
+
 //Delay to remedy debounce
-__asm void Delay(unsigned long counter)
-{
+//Don't worry about compiler errors since it is assembly code. It compiles without throwing a warning/error.
+__asm void Delay(unsigned long counter){
  subs r0, #1
  bne Delay // 3 clock cycle delay loop
  bx lr
