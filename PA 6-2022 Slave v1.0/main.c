@@ -7,31 +7,34 @@
 #include "PLL.h"
 #include "UART.h"
 
-#define SW1							0x01											// on the left side of the Launchpad board
-#define SW2							0x10											// on the right side of the Launchpad board
-
+//Port F buttons
+#define SW1							0x01						// on the left side of the Launchpad board
+#define SW2							0x10						// on the right side of the Launchpad board
+//PortF LEDs
 #define RED_LED     		0x02
 #define BLUE_LED  	  	0x04
 #define GREEN_LED				0x08
 #define YELLOW_LED			0x0A
 #define WHITE_LED				0x0E
+//Port A addresses
 #define PA2 (*((volatile unsigned long *)0x40004010))
 #define PA3 (*((volatile unsigned long *)0x40004020))
 #define PA4 (*((volatile unsigned long *)0x40004040))
 #define PA5 (*((volatile unsigned long *)0x40004080))
 #define PA6 (*((volatile unsigned long *)0x40004100))
 //#define PA7 (*((volatile unsigned long *)0x40004200))
+
 void EnableInterrupts(void);
 void DisableInterrupts(void);
 
 void PortA_Init(void){ volatile unsigned long delay;
   SYSCTL_RCGCGPIO_R |= 0x00000001;     // 1) activate clock for Port A
   delay = SYSCTL_RCGCGPIO_R;           // allow time for clock to start
-  GPIO_PORTA_AMSEL_R &= ~0x7C;      // 3) disable analog on PA2-7
-  GPIO_PORTA_PCTL_R &= ~0xFFFFFFFF; // 4) PCTL GPIO on PA2-7
-	GPIO_PORTA_DIR_R |=0x7C;        // 5) direction PA2-7 output  
-	GPIO_PORTA_AFSEL_R &= ~0x7C;      // 6) PA2-7 regular port function
-  GPIO_PORTA_DEN_R |= 0x7C;         // 7) enable PA2-7 digital port
+  GPIO_PORTA_AMSEL_R &= ~0x7C;      // 3) disable analog on PA2-6
+  GPIO_PORTA_PCTL_R &= ~0xFFFFFFFF; // 4) PCTL GPIO on PA2-6
+	GPIO_PORTA_DIR_R |=0x7C;        // 5) direction PA2-6 output  
+	GPIO_PORTA_AFSEL_R &= ~0x7C;      // 6) PA2-6 regular port function
+  GPIO_PORTA_DEN_R |= 0x7C;         // 7) enable PA2-6 digital port
 }
 
 // Initialize port F.
@@ -74,6 +77,7 @@ void PortF_Toggle(uint32_t data){
 void PortF_Off(uint32_t data){
   GPIO_PORTF_DATA_R &= ~data;    
 }
+
 //PortA functions
 void PortA_Output(uint32_t data){
   GPIO_PORTA_DATA_R = data;    
@@ -102,21 +106,21 @@ void GPIOPortF_Handler(void){
 
 int main(void){
 	volatile uint32_t ui32Loop;
-  PortF_Init();
-	PortA_Init();										// Initialize port F: Port F interrupt is enabled
+  PortF_Init();										//Initialize port F
+	PortA_Init();										//Initialize port A
 	DisableInterrupts(); 
-	PLL_Init();												// bus clock at 10 MHz
-	UART_Init();      								// initialize UART
-  EnableInterrupts();
+	PLL_Init();											// bus clock at 10 MHz
+	UART_Init();      							// initialize UART
+  EnableInterrupts();							//Port F interrupt is enabled
 	//DisableInterrupts();
 	//PortF_Output(BLUE_LED);
 	while (1){
 		switch (UART_InChar()){
-			case 'A': PortA_Output(0x04);break; 		//Turn on PA2
-			case 'B': PortA_Output(0x08);break;		  //PA3
-			case 'C': PortA_Output(0x10);break;			//PA4
-			case 'M': PortA_Toggle(0x20);break;      //Toggles the mode switch on the toy.
-			case 'H': PortA_Toggle(0x40);break;			//Toggle Volume Switch on the toy.
+			case 'A': PortA_Output(0x04);break; 		//Turn on PA2 ('A' button on toy)
+			case 'B': PortA_Output(0x08);break;		  //PA3 'B' button
+			case 'C': PortA_Output(0x10);break;			//PA4 'C' button
+			case 'M': PortA_Toggle(0x20);break;     //PA5 Toggles the mode switch on the toy.
+			case 'H': PortA_Toggle(0x40);break;			//PA6 Toggle Volume Switch on the toy.
 			//case 'L': PortA_Output(0x80);break; 	//PortA_Output(0x80) Not in use since volume was turned into one button
 			//default is optional since there should not be any characters other than the ones in the case statement
 		}		
