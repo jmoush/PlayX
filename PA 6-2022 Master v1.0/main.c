@@ -1,5 +1,6 @@
 // user button connected to PF4 (increment counter on falling edge)
-//Slave HC-05 is the module with the imprint in the middle. 
+//Master HC-05 is inside the control box and the Slave HC-05 is the module inside the toy.
+//The Master & Slave roles can be programmed with AT commands.
 #include <stdint.h>
 #include <stdlib.h>
 #include "tm4c123gh6pm.h"
@@ -110,34 +111,38 @@ int main(void){
 //Debouncing code within each if statement to alleviate bouncing of the swtiches.
 //Buttons A-C on toy,M for mode and H is for volume.
 //Use L if there is two buttons for volume control.
-	if (PA2 == 0x04){
+//Delay for the specific buttons that were used for prototype during senior design 22-23 was for 1*10^5 through 1*10^6.
+//The delay can be calculated by the formula y=(x*clockrate)/3); x is the desired time of the delay and y is the parameter for the Delay function.
+//The clock rate is set to 10MHz(see PLL.h)
+//The time used for the delay is between .03 and .3 seconds. Currently set to .05 seconds.
+		if (PA2 == 0x04){
 		UART_OutChar('A');
-		Delay(1000000);//between 100000-1000000
+		Delay(166667);
 		while(PA2 != 0x00){}
 		Delay(1);
 	} 
 	if (PA3 == 0x08){
 		UART_OutChar('B');
-		Delay(1000000);
+		Delay(166667);
 		while (PA3 != 0x00){}
 		Delay(1);
 	}
 	if (PA4 == 0x10){
 		UART_OutChar('C');
-		Delay(1000000);
+		Delay(166667);
 		while (PA4 != 0x00){}
 		Delay(1);
 	}
 	if (PA5 == 0x20){
 	UART_OutChar('M');
-	Delay(1000000);//between 100000-1000000
+	Delay(166667);//between 100000-1000000 
 	while(PA5 != 0x00){}
 	Delay(1);
 //	PortF_Toggle(RED_LED);//debugging
 	}
 	if (PA6 == 0x40){
 		UART_OutChar('H');
-		Delay(1000000);
+		Delay(166667);
 		while (PA6 != 0x00){}
 	//PortF_Toggle(BLUE_LED);//debugging
 		Delay(1);
@@ -145,7 +150,7 @@ int main(void){
 	/*
 	if (PA7 == 0x80){
 		UART_OutChar('L');
-		Delay(1000000);
+		Delay(166667);
 		while (PA7 != 0x00){}
 	//PortF_Toggle(BLUE_LED);//debugging
 		Delay(1);
