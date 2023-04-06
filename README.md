@@ -16,7 +16,7 @@ The Master source code is intended to be flashed on a Tiva TM4C123GXL board conn
 # AT Commands
 HC-05 Bluetooth Module can be in Master and/or Slave mode and pair to another HC-05 using AT commands.
 A pdf of AT commands available for the HC-05 is provided at https://s3-sa-east-1.amazonaws.com/robocore-lojavirtual/709/HC-05_ATCommandSet.pdf for reference. The AT commands were implemented using an Arduino IDE and Arduino UNO because of the convienence, but they can also be implemented inside Keil and using a serial terminal like PuTTy.  
-# List of AT Commands Used:  
+# List of AT Commands Used  
 *AT+ADDR?\r\n*. Retrieves the slave’s module Bluetooth address to allow master to pair using the bind command.  
 *AT+NAME \r\n*. Optional, I changed the name of master module to MasterHC05 and slave module to slaveHC05.  
 *AT+ROLE=0*. Sets module role to slave. AT+ROLE=1 sets module role to master.   
