@@ -4,7 +4,7 @@ This project is for the 2022-2023 Senior Design Team 02-PlayXtension at the Univ
 The ARM compiler version can be downloaded at https://developer.arm.com/downloads/view/ACOMP5. If using version 5.29 or higher of MDK, Stellaris debugger needs an addon to work which can be downloaded at https://developer.arm.com/documentation/ka002280/latest. The code was compiled using MDK 5.38,version 5.06 update 7 (build 960) of keil uvision 5 and the stellaris drivers for debugging.  
 # Microcontroller Connections
 Based on the Tiva TM4C123GXL:  
-The port used for the pushbuttons are Port A 2-6  
+The ports used for the pushbuttons are Port A 2-6  
 The HC-05 pin connections are:  
 RXD-PE5  
 TXD-PE4  
