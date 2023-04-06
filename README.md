@@ -1,5 +1,5 @@
 # PlayX
-This project is for the 22-23 Senior Design Team 02-PlayXtension at the University Of Kentucky. This project makes use of two Tiva TM4C123GXL boards and two HC-05 Bluetooth modules as well as the Keil uVision 5 IDE.
+This project is for the 2022-2023 Senior Design Team 02-PlayXtension at the University Of Kentucky. This project makes use of two Tiva TM4C123GXL boards and two HC-05 Bluetooth modules as well as the Keil uVision 5 IDE.
 # Keil uVision 5 Resources
 The ARM compiler version can be downloaded at https://developer.arm.com/downloads/view/ACOMP5. If using version 5.29 or higher of MDK, Stellaris debugger needs an addon to work which can be downloaded at https://developer.arm.com/documentation/ka002280/latest. The code was compiled using MDK 5.38,version 5.06 update 7 (build 960) of keil uvision 5 and the stellaris drivers for debugging.  
 # Microcontroller Connections
