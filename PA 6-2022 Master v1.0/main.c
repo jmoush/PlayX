@@ -87,11 +87,13 @@ void PortF_Toggle(uint32_t data){
 void GPIOPortF_Handler(void){
 	// Add your code here
 	if (PortF_Input() == SW1){ // for debugging since PortA is primarily used
-//			UART_OutChar('M');
+//			UART_OutString("Testing");
+UART_OutChar('A');
 		PortF_Output(GREEN_LED);
 		}
  		if (PortF_Input() == SW2){
-//			UART_OutChar('L');
+			UART_OutChar('B');
+			//UART_OutString("Off");
 			PortF_Output(0);
 		}
 //	// acknowledge flag4 and flag0
@@ -106,7 +108,7 @@ int main(void){
 	UART_Init();      								// initialize UART
   EnableInterrupts();//comment this or uncomment DisableInterrupts for final version. 
 	//DisableInterrupts(); //PortF interrupts used for debugging.
-	while(1){
+	
 //if input is high, output corresponding character
 //Debouncing code within each if statement to alleviate bouncing of the swtiches.
 //Buttons A-C on toy,M for mode and H is for volume.
@@ -115,7 +117,9 @@ int main(void){
 //The delay can be calculated by the formula y=(x*clockrate)/3); x is the desired time of the delay and y is the parameter for the Delay function.
 //The clock rate is set to 10MHz(see PLL.h)
 //The time used for the delay is between .03 and .3 seconds. Currently set to .05 seconds.
-		if (PA2 == 0x04){
+	while(1){
+	if (PA2 == 0x04){
+		PortF_Toggle(BLUE_LED);
 		UART_OutChar('A');
 		Delay(166667);
 		while(PA2 != 0x00){}

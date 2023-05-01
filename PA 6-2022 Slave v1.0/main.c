@@ -26,7 +26,13 @@
 
 void EnableInterrupts(void);
 void DisableInterrupts(void);
-
+//Delay
+//Don't worry about compiler errors since it is assembly code. It compiles without throwing a warning/error.
+__asm void Delay(unsigned long counter){
+ subs r0, #1
+ bne Delay // 3 clock cycle delay loop
+ bx lr
+}
 void PortA_Init(void){ volatile unsigned long delay;
   SYSCTL_RCGCGPIO_R |= 0x00000001;     // 1) activate clock for Port A
   delay = SYSCTL_RCGCGPIO_R;           // allow time for clock to start
@@ -80,7 +86,7 @@ void PortF_Off(uint32_t data){
 
 //PortA functions
 void PortA_Output(uint32_t data){
-  GPIO_PORTA_DATA_R = data;    
+  GPIO_PORTA_DATA_R |= data;    
 }
 void PortA_Toggle(uint32_t data){
   GPIO_PORTA_DATA_R ^= data;    
@@ -93,7 +99,7 @@ void PortA_Off(uint32_t data){
 // PortF_handler
 void GPIOPortF_Handler(void){
 	if (PortF_Input() == SW1){
-		PortA_Output(0x00);
+		PortF_Output(0x00);
 		//UART_OutChar('1');
 		}
  		if (PortF_Input() == SW2){
@@ -113,14 +119,43 @@ int main(void){
 	UART_Init();      							// initialize UART
   EnableInterrupts();							//Port F interrupt is enabled
 	//DisableInterrupts();
-	//PortF_Output(BLUE_LED);
+//PortF LEDs for debugging connections 
+//PA2-6(0x4,8,10,20,40)
+//Turns off the port A output pins after a delay as a work around for the toy.
 	while (1){
 		switch (UART_InChar()){
-			case 'A': PortA_Output(0x04);break; 		//Turn on PA2 ('A' button on toy)
-			case 'B': PortA_Output(0x08);break;		  //PA3 'B' button
-			case 'C': PortA_Output(0x10);break;			//PA4 'C' button
-			case 'M': PortA_Toggle(0x20);break;     //PA5 Toggles the mode switch on the toy.
-			case 'H': PortA_Toggle(0x40);break;			//PA6 Toggle Volume Switch on the toy.
+			case 'A':{ 
+				PortF_Toggle(RED_LED);
+				PortA_Output(0x04);//Turn on PA2 ('A' button on toy)
+				Delay(166667);
+				PortA_Off(0x04);
+			break;
+			} 		
+			case 'B':{
+			PortF_Toggle(BLUE_LED);
+			PortA_Output(0x08);//PA3 'B' button
+			Delay(166667);
+			PortA_Off(0x08);
+			break;
+			}				
+			case 'C':{
+				PortF_Toggle(GREEN_LED);
+				PortA_Output(0x10);
+				Delay(166667);
+				PortA_Off(0x10);
+				break;
+			}				//PA4 'C' button
+			case 'M':{
+			PortF_Toggle(WHITE_LED);
+			PortA_Toggle(0x20); //PA5 Toggles the mode switch on the toy.
+			break;     
+		}
+			case 'H':{
+			PortF_Toggle(YELLOW_LED);
+			PortA_Toggle(0x40);			//PA6 Toggle Volume Switch on the toy.
+
+			break;
+		}
 			//case 'L': PortA_Output(0x80);break; 	//PortA_Output(0x80) Not in use since volume was turned into one button
 			//default is optional since there should not be any characters other than the ones in the case statement
 		}		
